@@ -1,0 +1,426 @@
+.texteditor {
+  --spacing: 1.4rem;
+  --radius: 20px;
+  padding-left: 10px;
+}
+
+.texteditor li {
+  display: block;
+  position: relative;
+  padding-left: calc(2 * var(--spacing) - var(--radius) - 5px);
+}
+
+.texteditor ul {
+  margin-left: calc(var(--radius) - var(--spacing));
+  padding-left: 10px;
+}
+
+.texteditor ul li.hide-mark {
+  border-left: 2px solid #ddd;
+}
+
+.texteditor ul li:last-child {
+  border-color: transparent;
+}
+
+.texteditor ul li::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(var(--spacing) + -31px);
+  left: -2px;
+  width: calc(var(--spacing) - 10px);
+  height: calc(var(--spacing) - (-2.5px));
+  border: solid #ddd;
+  border-width: 0 0 2px 2px;
+}
+
+.texteditor ul li:first-child::before {
+  top: calc(var(--spacing) + -25px);
+  height: calc(var(--spacing) - (2.5px));
+}
+
+.texteditor ul li::after {
+  content: '';
+  height: 100%;
+  width: 2px;
+  position: absolute;
+  left: -2px;
+  top: 16px;
+  background-color: #ddd;
+}
+
+/* .texteditor ul li:has(div)::after { */
+/*   display: none; */
+/* } */
+.texteditor > ul li.hide-mark::after {
+  display: none;
+}
+
+.texteditor ul li:last-child::after {
+  display: none;
+}
+
+.texteditor ul li:not(li.hide-mark):last-of-type::after {
+  display: none;
+}
+
+.texteditor ul li:has(+ li.hide-mark:last-of-type)::after {
+  display: none;
+}
+
+/* .texteditor ul li:not(li.hide-mark):nth-last-child(2)::after { */
+/*   display: block; */
+/*   background: red; */
+/* } */
+
+/* Override it */
+
+.texteditor ul li:only-child::after {
+  display: none;
+}
+
+.texteditor ul li div::before {
+  content: '';
+  height: 10px;
+  width: 10px;
+  background-color: #000;
+  border-radius: 100%;
+  position: absolute;
+  left: 9px;
+  top: 11px;
+  z-index: 1;
+  border: 2.5px solid #fff;
+}
+
+/* nested marker different bullet filled and outlined */
+
+.texteditor .compound-node-container {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 7px;
+  width: fit-content;
+  min-width: 300px;
+}
+
+.texteditor .description-node-container {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 7px;
+  border: 1.5px solid #eee;
+}
+
+.texteditor .description-node-title {
+  font-weight: bold;
+}
+
+.texteditor ul li {
+  border-left: 2px solid transparent;
+}
+
+.texteditor {
+  font-size: 17px;
+}
+
+.texteditor ul li.hide-mark::after,
+.texteditor ul li.hide-mark::before {
+  display: none !important;
+}
+
+/* Token styles */
+
+.texteditor .edgelabel-token {
+  font-weight: bold;
+}
+
+.texteditor .sublabel-token {
+  font-style: italic;
+  color: gray;
+}
+
+.texteditor .classes-token {
+  color: gray;
+}
+
+/* editor styles */
+.texteditor li div {
+  padding: 0px 6px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  vertical-align: middle;
+  white-space: pre;
+  width: fit-content;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.texteditor li .compound-node-container div {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.texteditor li .description-node-container div {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* editor colors */
+.texteditor li .green {
+  background: #70e5552b;
+}
+
+.texteditor li .green.compound-node-container,
+.texteditor li .green.description-node-container {
+  background: #70e55514;
+}
+
+.texteditor li .blue {
+  background-color: #e9f3ff9e;
+}
+
+.texteditor li .yellow {
+  background-color: #fff9cc;
+}
+
+.texteditor li .yellow.compound-node-container,
+.texteditor li .yellow.description-node-container {
+  background-color: #fffddc;
+}
+
+.texteditor li .red {
+  background-color: #ff00000f;
+}
+
+.texteditor li .white {
+  background-color: #ffffff;
+}
+
+.texteditor li .purple {
+  background-color: #f6edff;
+}
+
+.texteditor li .orange {
+  background-color: #ffed0026;
+}
+
+.texteditor li .gray {
+  background-color: #fafafa;
+}
+/* Compound node styles */
+.texteditor li .compound-node-container {
+  border: 1.5px dashed lightgray;
+  width: 100%;
+}
+
+.texteditor .compound-node-title {
+  font-weight: bold;
+}
+
+.texteditor .tree-view-output {
+  background: whitesmoke;
+  color: black;
+  font-size: 0.7em;
+  font-weight: 400;
+  height: calc(100vh - var(--top-row-height));
+  width: 100%;
+  line-height: 1.1;
+  margin: 0;
+  bottom: 0;
+  max-height: 200px;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-align: left;
+  padding: 10px;
+}
+
+/* selected styles */
+.texteditor li .selected {
+  box-sizing: border-box;
+  border: 2px dashed #5c1cd6 !important;
+}
+
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ *
+ */
+
+.Collapsible__container {
+  background: #fcfcfc;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.Collapsible__title {
+  cursor: pointer;
+  padding: 5px 5px 5px 20px;
+  position: relative;
+  font-weight: bold;
+  list-style: none;
+  outline: none;
+}
+
+.Collapsible__title::marker,
+.Collapsible__title::-webkit-details-marker {
+  display: none;
+}
+
+.Collapsible__title:before {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 4px 6px 4px 6px;
+  border-left-color: #000;
+  display: block;
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Collapsible__container[open] .Collapsible__title:before {
+  border-color: transparent;
+  border-width: 6px 4px 0 4px;
+  border-top-color: #000;
+}
+
+.Collapsible__content {
+  padding: 0 5px 5px 20px;
+}
+
+.Collapsible__collapsed .Collapsible__content {
+  display: none;
+  user-select: none;
+}
+
+.overflow-scrolling {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+
+.toolbar-down-transition {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.fill-available {
+  width: 100%;
+  width: stretch;
+}
+
+/* reset */
+.texteditor button {
+  all: unset;
+}
+
+.TooltipContent {
+  border-radius: 8px;
+  padding: 10px 10px;
+  font-size: 15px;
+  line-height: 1;
+  color: white;
+  background-color: #111827;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  user-select: none;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  z-index: 50;
+}
+.TooltipContent[data-state='delayed-open'][data-side='top'] {
+  animation-name: slideDownAndFade;
+}
+.TooltipContent[data-state='delayed-open'][data-side='right'] {
+  animation-name: slideLeftAndFade;
+}
+.TooltipContent[data-state='delayed-open'][data-side='bottom'] {
+  animation-name: slideUpAndFade;
+}
+.TooltipContent[data-state='delayed-open'][data-side='left'] {
+  animation-name: slideRightAndFade;
+}
+
+.TooltipArrow {
+  opacity: 0;
+}
+
+.IconButton {
+  font-family: inherit;
+  border-radius: 100%;
+  height: 35px;
+  width: 35px;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--violet11);
+  background-color: white;
+  box-shadow: 0 2px 10px var(--blackA7);
+}
+.IconButton:hover {
+  background-color: var(--violet3);
+}
+.IconButton:focus {
+  box-shadow: 0 0 0 2px black;
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

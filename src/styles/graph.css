@@ -1,0 +1,270 @@
+.graph {
+  background-color: white;
+}
+
+.layoutflow {
+  flex-grow: 1;
+}
+
+.react-flow .react-flow__renderer {
+  z-index: 1;
+}
+
+.react-flow .react-flow__viewport {
+  z-index: 2;
+}
+
+.default__node,
+.nodeWithSubLabel {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 7px;
+  line-height: 1.3;
+  border: 1.5px solid black;
+  border-radius: 7px;
+  white-space: break-spaces;
+  background: white;
+}
+
+.selected.default__node,
+.selected.description-node-container,
+.selected.compound-node,
+.selected.nodeWithSubLabel {
+  border: 1.5px dashed #5c1cd6 !important;
+}
+
+.highlighted::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  opacity: 0.15;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  transition-duration: 0.5s;
+  animation: ease-in;
+}
+
+.react-flow__edge-text {
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'SF Pro Text', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}
+
+.react-flow__edge-path {
+  stroke: rgb(156, 156, 156);
+  stroke-width: 1.5;
+}
+
+.react-flow__edge-textbg {
+  stroke: #878869;
+  fill: #feffc0 !important;
+  stroke-width: 1.5px;
+  stroke-dasharray: 3 3;
+  rx: 5;
+  ry: 5;
+}
+
+.compound-node {
+  width: 150px;
+  padding: 7px 7px;
+  border: 1.5px dashed black;
+  border-radius: 10px;
+  background: white;
+  white-space: break-spaces;
+}
+
+.compound-node .header {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.child-node {
+  width: 100%;
+  text-align: center;
+  border: 1.5px solid black;
+  border-radius: 7px;
+  padding: 5px 2px;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.layoutflow .description-node-container {
+  width: 150px;
+  border: 1.5px dashed black;
+  border-radius: 10px;
+  background: white;
+  white-space: break-spaces;
+  text-align: left;
+}
+
+.layoutflow .description-node-title {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 0px;
+  text-align: center;
+  border-bottom: 1.5px dashed lightgray;
+}
+
+.layoutflow .description-node-body {
+  font-size: 13px;
+  padding: 9px 10px;
+  white-space: break-spaces;
+  line-height: 18px;
+  text-align: left;
+}
+
+.preview-container {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.preview-container img {
+  width: 100% !important;
+}
+
+.nodeWithSubLabelContainer {
+  width: 150px;
+  text-align: center;
+}
+
+.sublabel {
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: center;
+  color: rgb(139, 139, 139);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.nodeWithSubLabel {
+  width: 100%;
+  min-height: 36.5px;
+}
+
+.edgebutton-foreignobject {
+  overflow-x: auto;
+}
+
+.label-container {
+  height: 100%;
+  width: 100%;
+  display: inline-flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.label-text {
+  text-align: center;
+  padding: 3px;
+  background-color: #feffc0;
+  border: 2px dotted #878869;
+  /* display: inline; */
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: pre-line;
+}
+
+/* Theming */
+
+.graph .blue-children .child-node {
+  background-color: #e1efff;
+  border: 1.5px solid #9fb4cc;
+  border-radius: 7px;
+}
+
+.graph .green-children .child-node {
+  background: #42b440;
+  border: none;
+  border-radius: 7px;
+  color: white;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.graph .white {
+  background: #ffffff;
+  border-radius: 7px;
+}
+.graph .blue {
+  background-color: #e1efff;
+  border: 1.5px solid #9fb4cc;
+  border-radius: 7px;
+}
+
+.graph .white {
+  background-color: white;
+}
+
+.graph .yellow {
+  background-color: #fffcd2;
+}
+
+.graph .purple {
+  background-color: #f2e6ff;
+}
+
+.graph .orange {
+  background-color: #ff000017;
+}
+
+.graph .gray {
+  background-color: #f4f4f4;
+}
+
+.graph .green {
+  background: #e7ffe1;
+  border-radius: 7px;
+}
+.graph .red {
+  background: #ffdede;
+}
+.graph .dark-green {
+  background: #42b440;
+}
+
+.graph .light-green {
+  background: #f2ffef;
+}
+
+.graph .light-blue {
+  background: #f4f9ff;
+}
+.exported-graph::after {
+  content: '';
+  background-color: transparent;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* .react-flow .selected { */
+/*   border: 2px dashed #5c1cd6; */
+/* } */
+.exported-graph {
+  position: relative;
+}
+
+
+.dotted-background {
+  background: white;
+  background-image: radial-gradient(black 1px, transparent 0);
+  background-size: 40px 40px;
+  background-position: -19px -19px;
+}

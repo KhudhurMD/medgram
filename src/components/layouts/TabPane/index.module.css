@@ -1,0 +1,13 @@
+.Handle {
+  color: gray;
+  z-index: 20;
+}
+
+.Handle:hover,
+.Handle[data-dragging='true'] {
+  background-color: lightgray;
+}
+
+/* .resizableHandle { */
+/*   background-color: var(--color-background); */
+/* } */

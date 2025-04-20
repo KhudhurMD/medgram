@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+    // Further reading:
+    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+    url = env("MEDGRAM_DATABASE_URL")
+}
+
+// Necessary for Next auth
+model Account {
+    id                String  @id @default(cuid())
+    userId            String
+    type              String
+    provider          String
+    providerAccountId String
+    refresh_token     String? @db.Text
+    access_token      String? @db.Text
+    expires_at        Int?
+    token_type        String?
+    scope             String?
+    id_token          String? @db.Text
+    session_state     String?
+    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([provider, providerAccountId])
+}
+
+model Session {
+    id           String   @id @default(cuid())
+    sessionToken String   @unique
+    userId       String
+    expires      DateTime
+    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+    id            String    @id @default(cuid())
+    name          String?
+    email         String?   @unique
+    emailVerified DateTime?
+    profession    String?
+    specialty     String?
+    workplace     String?
+    image         String?
+    uploadedImage String?
+    graph         Graph[]
+    accounts      Account[]
+    sessions      Session[]
+    isAdmin       Boolean?   @default(false)
+}
+
+model Graph {
+    id        String   @id @default(cuid())
+    name      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    user      User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+    communityGraph CommunityGraph[]
+    userId    String?
+    anonymousId String?
+    graphData String 
+    links     GraphLink[]
+    editorVersion String @default("v1")
+}
+
+model GraphLink {
+    id        String   @id @default(cuid())
+    graph     Graph    @relation(fields: [graphId], references: [id], onDelete: Cascade)
+    graphId   String
+    canClone  Boolean
+    @@unique([graphId, canClone])
+}
+
+model VerificationToken {
+    identifier String
+    token      String   @unique
+    expires    DateTime
+
+    @@unique([identifier, token])
+}
+
+model WishlistEmails {
+    email String @unique
+    isAdded Boolean @default(false)
+}
+
+model Ticket {
+    id        String   @id @default(cuid())
+    email     String?
+    type      String?
+    message   String
+    createdAt DateTime @default(now())
+}
+
+model CommunityGraph {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    graphData String 
+    graph    Graph    @relation(fields: [graphId], references: [id], onDelete: Cascade)
+    graphId   String
+    status    String @default("pending")
+}
+
+model PublicGraph {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    imageUrl String
+    title    String
+    description String
+    slug     String
+    editUrl String?
+    viewUrl String?
+    authorName String
+    authorUrl String?
+  }
+

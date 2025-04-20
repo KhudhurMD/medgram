@@ -1,0 +1,93 @@
+.ProseMirror:focus {
+  outline: none;
+}
+
+.react-flow .react-flow__handle {
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  border: 2px solid #fff;
+  margin-top: -0px;
+  background-color: #000;
+  transition: opacity 0.2s;
+}
+
+.react-flow .react-flow__handle:hover {
+  background-color: green;
+}
+
+.is-active {
+  background-color: #000;
+  border-color: #ddd;
+  color: #fff;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+hr {
+  border-top: 1px dashed #d0d0d0 !important;
+  margin: 0px 0 !important;
+  right: -5px;
+}
+
+/* border but doesn't affect the layout */
+.is-focused::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1.5px dashed purple;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.vizeditor-node p {
+  padding-right: 8px;
+  padding-left: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+/* if only one paragraph inside vizeditor-node, all borders rounded */
+/* otherwise, first paragraph top border rounded, last paragraph bottom border rounded */
+.vizeditor-node :not(li) > p:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-top: 7px;
+}
+
+.vizeditor-node :not(li) > p:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-bottom: 7px;
+}
+
+/* .vizeditor-node li:before { */
+/*   content: '•'; */
+/*   position: absolute; */
+/*   font-size: 1.5em; */
+/*   line-height: 0.2; */
+/*   color: #000; */
+/*   left: 10px; */
+/* } */
+/**/
+.vizeditor-node ul {
+  margin-bottom: 5px;
+}
+.vizeditor-node li p {
+  padding: 0px 0px;
+}
+
+.exported-graph .hide-on-export,
+.view-only-graph .hide-on-export {
+  display: none;
+}
+
+.exported-graph .vizeditor-node {
+  border: 1.5px solid #000;
+}
+
+.selected .vizeditor-node {
+  border-color: #000;
+}
